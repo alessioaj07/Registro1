@@ -1,8 +1,8 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5000/api',
+  apiUrl: 'https://cuddly-train-wrwv56jp4w4vf96j6-5000.app.github.dev/api',
   keycloak: {
-    url: 'http://localhost:8080/auth',
+    url: 'https://cuddly-train-wrwv56jp4w4vf96j6-8080.app.github.dev/auth',
     realm: 'registro-realm',
     clientId: 'registro-client'
   }

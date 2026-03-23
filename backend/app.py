@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from jose import jwt
 import requests
 from db_wrapper import DBWrapper
-from config import KEYCLOAK_SERVER_URL, KEYCLOAK_REALM, KEYCLOAK_CLIENT_ID
+from config import KEYCLOAK_SERVER_URL, KEYCLOAK_REALM, KEYCLOAK_CLIENT_ID, CORS_ORIGINS
 
 app = Flask(__name__)
+CORS(app, origins=CORS_ORIGINS, supports_credentials=True)
 
 DB = DBWrapper()
 

@@ -16,7 +16,15 @@ export class KeycloakService {
 
   async init(): Promise<void> {
     try {
-      await this.keycloak.init({ onLoad: 'check-sso', silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html' });
+      await this.keycloak.init({
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+        pkceMethod: 'S256',
+        checkLoginIframe: true,
+        checkLoginIframeInterval: 5,
+        enableLogging: true,
+        flow: 'standard'
+      });
     } catch (err) {
       console.error('Errore inizializzazione Keycloak', err);
     }

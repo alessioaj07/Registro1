@@ -9,3 +9,5 @@ DB_NAME = os.getenv('DB_NAME', 'registro')
 KEYCLOAK_SERVER_URL = os.getenv('KEYCLOAK_SERVER_URL', 'http://localhost:8080')
 KEYCLOAK_REALM = os.getenv('KEYCLOAK_REALM', 'registro-realm')
 KEYCLOAK_CLIENT_ID = os.getenv('KEYCLOAK_CLIENT_ID', 'registro-client')
+
+CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:4200').split(',')

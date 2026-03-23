@@ -15,8 +15,13 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     await this.keycloakService.init();
-    this.roles = this.keycloakService.getUserRoles();
 
+    if (!this.keycloakService.isLoggedIn()) {
+      this.keycloakService.login();
+      return;
+    }
+
+    this.roles = this.keycloakService.getUserRoles();
     if (this.roles.includes('docente')) {
       this.router.navigate(['/docente']);
     } else if (this.roles.includes('studente')) {

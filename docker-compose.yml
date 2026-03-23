@@ -1,0 +1,83 @@
+version: '3.9'
+services:
+  db:
+    image: mysql:8.0
+    container_name: registro_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: registro
+      MYSQL_USER: registro_user
+      MYSQL_PASSWORD: registro_pass
+    ports:
+      - '3306:3306'
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./backend/setup.sql:/docker-entrypoint-initdb.d/setup.sql:ro
+
+  keycloak-db:
+    image: postgres:15-alpine
+    container_name: keycloak_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    volumes:
+      - keycloak_dbdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: registro_backend
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: registro_user
+      DB_PASSWORD: registro_pass
+      DB_NAME: registro
+      KEYCLOAK_SERVER_URL: http://keycloak:8080
+      KEYCLOAK_REALM: registro-realm
+      KEYCLOAK_CLIENT_ID: registro-client
+      CORS_ORIGINS: "http://localhost:4200,https://cuddly-train-wrwv56jp4w4vf96j6-4200.app.github.dev"
+    depends_on:
+      - db
+      - keycloak
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: registro_frontend
+    restart: unless-stopped
+    ports:
+      - '4200:4200'
+    environment:
+      - API_URL=http://localhost:5000/api
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.7
+    container_name: registro_keycloak
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8080
+      KC_HOSTNAME_STRICT_HTTPS: 'false'
+    command: ["start-dev"]
+    ports:
+      - '8080:8080'
+    depends_on:
+      - keycloak-db
+
+volumes:
+  dbdata:
+  keycloak_dbdata:
