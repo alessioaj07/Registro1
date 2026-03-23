@@ -1,0 +1,39 @@
+<h2>Area Docente</h2>
+<div class="card">
+  <h3>Inserisci nuovo voto</h3>
+  <div class="form-group">
+    <label>Nome Studente</label>
+    <input [(ngModel)]="studentName" />
+  </div>
+  <div class="form-group">
+    <label>Materia</label>
+    <input [(ngModel)]="subject" />
+  </div>
+  <div class="form-group">
+    <label>Voto</label>
+    <input [(ngModel)]="grade" />
+  </div>
+  <button (click)="addVote()">Salva Voto</button>
+</div>
+
+<p *ngIf="error" class="error">{{ error }}</p>
+
+<h3>Voti Studenti</h3>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Studente</th>
+      <th>Materia</th>
+      <th>Voto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let g of grades">
+      <td>{{ g.id }}</td>
+      <td>{{ g.student_name }}</td>
+      <td>{{ g.subject }}</td>
+      <td>{{ g.grade }}</td>
+    </tr>
+  </tbody>
+</table>

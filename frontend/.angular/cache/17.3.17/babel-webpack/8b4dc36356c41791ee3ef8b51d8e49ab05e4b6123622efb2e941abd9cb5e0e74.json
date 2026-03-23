@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const environment = {\n  production: false,\n  apiUrl: 'http://localhost:5000/api',\n  keycloak: {\n    url: 'http://localhost:8080/auth',\n    realm: 'registro-realm',\n    clientId: 'registro-client'\n  }\n};","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

@@ -1,0 +1,11 @@
+<div class="app-shell">
+  <h1>{{ title }}</h1>
+
+  <div class="toolbar">
+    <button (click)="login()" *ngIf="!keycloakService.isLoggedIn()">Login</button>
+    <button (click)="logout()" *ngIf="keycloakService.isLoggedIn()">Logout</button>
+    <span *ngIf="keycloakService.isLoggedIn()">Ruoli: {{ roles.join(', ') }}</span>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,21 @@
+<h2>Area Studente</h2>
+<p>Visualizzi solo i tuoi voti.</p>
+<p *ngIf="error" class="error">{{ error }}</p>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Studente</th>
+      <th>Materia</th>
+      <th>Voto</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let g of grades">
+      <td>{{ g.id }}</td>
+      <td>{{ g.student_name }}</td>
+      <td>{{ g.subject }}</td>
+      <td>{{ g.grade }}</td>
+    </tr>
+  </tbody>
+</table>

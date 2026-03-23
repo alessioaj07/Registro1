@@ -1,0 +1,15 @@
+-- Esempio setup DB
+CREATE DATABASE IF NOT EXISTS registro CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE registro;
+
+CREATE TABLE IF NOT EXISTS grades (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  student_name VARCHAR(255) NOT NULL,
+  subject VARCHAR(255) NOT NULL,
+  grade VARCHAR(10) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE USER IF NOT EXISTS 'registro_user'@'%' IDENTIFIED BY 'registro_pass';
+GRANT ALL PRIVILEGES ON registro.* TO 'registro_user'@'%';
+FLUSH PRIVILEGES;

@@ -1,0 +1,62 @@
+nohup: ignoring input
+
+> registro-elettronico@0.0.1 start
+> ng serve --host 0.0.0.0 --port 4200
+
+Workspace extension with invalid name (defaultProject) found.
+Option "browserTarget" is deprecated: Use 'buildTarget' instead.
+
+Warning: This is a simple server for use in testing or debugging Angular applications
+locally. It hasn't been reviewed for security issues.
+
+Binding this server to an open connection can result in compromising your application or
+computer. Using a different host than the one passed to the "--host" flag might result in
+websocket connection issues. You might need to use "--disable-host-check" if that's the
+case.
+    
+****************************************************************************************
+This is a simple server for use in testing or debugging Angular applications locally.
+It hasn't been reviewed for security issues.
+
+DON'T USE IT FOR PRODUCTION!
+****************************************************************************************
+- Generating browser application bundles (phase: setup)...
+    TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI. To control ECMA version and features use the Browserslist configuration. For more information, see https://angular.io/guide/build#configuring-browser-compatibility
+    NOTE: You can set the "target" to "ES2022" in the project's tsconfig to remove this warning.
+✔ Browser application bundle generation complete.
+
+Initial chunk files   | Names         |  Raw size | Estimated transfer size
+main.js               | main          | 360.52 kB |                96.78 kB
+polyfills.js          | polyfills     | 105.44 kB |                32.14 kB
+styles.css, styles.js | styles        |  70.85 kB |                21.26 kB
+runtime.js            | runtime       |   1.26 kB |               685 bytes
+
+                      | Initial total | 538.07 kB |               150.86 kB
+
+Build at: 2026-03-23T17:13:33.459Z - Hash: a322354b60720e97 - Time: 7124ms
+
+Warning: /workspaces/Registro1/frontend/node_modules/keycloak-js/dist/keycloak.mjs depends on 'base64-js'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+Warning: /workspaces/Registro1/frontend/node_modules/keycloak-js/dist/keycloak.mjs depends on 'js-sha256'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+Warning: /workspaces/Registro1/frontend/src/test.ts is part of the TypeScript compilation but it's unused.
+Add only entry points to the 'files' or 'include' properties in your tsconfig.
+
+
+
+** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **
+
+
+✔ Compiled successfully.
+✔ Browser application bundle generation complete.
+
+Initial chunk files | Names   | Raw size | Estimated transfer size
+runtime.js          | runtime |  1.26 kB |               687 bytes
+
+3 unchanged chunks
+
+Build at: 2026-03-23T17:13:34.960Z - Hash: fb8891cea91e0906 - Time: 1428ms
+
+✔ Compiled successfully.
